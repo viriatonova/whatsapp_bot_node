@@ -1,11 +1,8 @@
 import express from 'express';
-import { MiddlewareGLobal } from './src/Middleware/default.js';
-import { ROUTER } from './router.js';
+import { MiddlewareGLobal } from './src/Middlewares/default.js';
+import { ROUTER } from './api/router.js';
 import cors from 'cors'
-import dotenv from 'dotenv';
-
-dotenv.config();
-
+import bodyParser from 'body-parser';
 
 /**
  * Server Configs
@@ -15,6 +12,7 @@ const APP = express();
 const PORT = 52000;
 
 APP.use(cors())
+APP.use(bodyParser.json())
 APP.use(MiddlewareGLobal)
 APP.use(ROUTER)
 
